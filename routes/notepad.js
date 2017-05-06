@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 	}
 	var username = req.session.username;
 	 notepadModel.find({username:username},function(err,result){
-	 	return res.render('notepadList',result);
+	 	return res.render('notepadList',{"notepadList":result});
 	 })
  
 });
@@ -29,5 +29,16 @@ router.post('/add', function(req, res, next) {
 		if(err){return res.send(err);}
 		return res.send('添加成功');
 	}) 
+});
+
+router.get('/del/:id', function(req, res, next) {
+	if(!req.session.userInfo){
+		return res.send('请先登陆');
+	}
+	var id = req.params.id;
+	 notepadModel.remove({"_id":id},function(){
+        res.send("删除成功");
+    });
+ 
 });
 module.exports = router;
