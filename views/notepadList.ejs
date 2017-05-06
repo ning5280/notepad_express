@@ -28,7 +28,7 @@
         <td><%= notepadList[key]['content'] %></td> 
         <td><%= notepadList[key]['create_time'] %></td> 
         <td>
-          <a href="">编辑</a>
+          <a href="/notepad/edit/<%=notepadList[key]['_id'] %>">编辑</a>
           <a href="/notepad/del/<%=notepadList[key]['_id'] %>">删除</a>
         </td> 
       </tr>
