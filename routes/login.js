@@ -12,11 +12,15 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 
 	
-	let username = req.body.username;
-	let passowrd = req.body.password;
+	var username = req.body.username;
+	var passowrd = req.body.password;
 
-	usersModel.find({'username':username},function(err,res){
-			res.send(req.err);
+	usersModel.find({'username':username},function(err,result){
+			var userInfo = result[0];
+			if(password==userInfo.password){
+				req.session.userInfo = userInfo;
+				res.send('登录成功');
+			}
 	})
 
 
