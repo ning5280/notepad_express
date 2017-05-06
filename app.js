@@ -10,6 +10,8 @@ var index = require('./routes/index');
 var users = require('./routes/users');
 var login = require('./routes/login');
 var register = require('./routes/register');
+var notepad = require('./routes/notepad');
+
 
 var db = require('./models/db');
 
@@ -37,6 +39,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/notepad', notepad);
 
 
 

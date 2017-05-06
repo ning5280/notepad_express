@@ -5,7 +5,7 @@ var usersModel = require('../models/users.js')
 /* GET users listing. */
 router.get('/', function(req, res, next) {
 	
-	res.render('login');
+	return res.render('login');
 
 });
 
@@ -13,13 +13,16 @@ router.post('/', function(req, res, next) {
 
 	
 	var username = req.body.username;
-	var passowrd = req.body.password;
+	var password = req.body.password;
 
 	usersModel.find({'username':username},function(err,result){
 			var userInfo = result[0];
+			if(!userInfo){
+				return res.send('用户名密码错误');
+			}
 			if(password==userInfo.password){
 				req.session.userInfo = userInfo;
-				res.send('登录成功');
+				return res.send('登录成功');
 			}
 	})
 
