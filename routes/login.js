@@ -10,9 +10,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+
 	
 	let username = req.body.username;
 	let passowrd = req.body.password;
+
 	usersModel.find({'username':username},function(err,res){
 			res.send(req.err);
 	})
