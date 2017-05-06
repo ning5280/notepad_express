@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1/notepad');
+mongoose.connect('mongodb://localhost/notepad');
 
 var db = mongoose.connection;
 db.once('open', function (callback) {
